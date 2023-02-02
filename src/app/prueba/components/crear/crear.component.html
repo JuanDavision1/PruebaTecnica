@@ -20,6 +20,6 @@
           <input type="text" formControlName="body"  class="form-control" id="exampleInputPassword1">
         </div>
         <button type="submit" class="btn btn-success" [disabled]="miform.invalid">Crealo!</button>
-        <button type="button" class="btn btn-primary"  routerLink="principal/tablas">Volver</button>
+        <button class="btn btn-primary"  (click)="volver()">Volver</button>
       </form>
 </div>

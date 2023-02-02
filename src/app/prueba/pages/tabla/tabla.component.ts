@@ -20,9 +20,12 @@ export class TablaComponent {
 constructor(private datosservice:PruebaService){}
 ngOnInit(): void {
 this.datosservice.getdata().subscribe(
-  datos=>{this.datos = datos } 
-)
+  datos=>{this.datos = datos
+
   
+  } 
+)
+
 }
 borrar(id:number){
   console.log('borrado', id)
@@ -38,6 +41,9 @@ abrirmodificar(){
 
 establecerData(event:TipadoServ[]){
  this.datos =event
- console.log(this.datos)
+this.datosservice.agregardata(this.datos).subscribe(resp=>{
+  localStorage.setItem('nuevo',JSON.stringify(resp))
+  console.log('Respuesta',resp)})
+
 }
 }

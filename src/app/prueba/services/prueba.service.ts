@@ -11,9 +11,13 @@ export class PruebaService {
 
   constructor(private http: HttpClient) {}
   getdata(): Observable<TipadoServ[]> {
+    
     return this.http.get<TipadoServ[]>(this.urlservice);
   }
   eliminardata(id:number):Observable<TipadoServ>{
     return this.http.delete<TipadoServ>(`${this.urlservice}/${id}`);
+  }
+  agregardata(data:TipadoServ[]):Observable<TipadoServ[]>{
+    return this.http.post<TipadoServ[]>(this.urlservice,data) 
   }
 }

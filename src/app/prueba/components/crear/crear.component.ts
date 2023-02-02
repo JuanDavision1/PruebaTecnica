@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TipadoServ } from '../../interfaces/tipado.interfaces';
 
 @Component({
   selector: 'app-crear',
@@ -13,11 +15,14 @@ miform: FormGroup = this.fb.group({
   title:[' ',Validators.required],
   body:[' ',Validators.required],
 })
-constructor(private fb:FormBuilder){}
-@Output() newItemEvent = new EventEmitter<string[]>();
+constructor(private fb:FormBuilder,private router: Router ){}
+@Output() newItemEvent = new EventEmitter<TipadoServ[]>();
 guardar(){
 console.log(this.miform.value)
 this.newItemEvent.emit(this.miform.value)
-//this.miform.reset()
+this.miform.reset()
+}
+volver(){
+    this.router.navigate(['/tablas']);
 }
 }
