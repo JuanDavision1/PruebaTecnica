@@ -14,7 +14,7 @@ export class CrearComponent {
 
   miform: FormGroup = this.fb.group({
     id:['',[Validators.required,Validators.minLength(1)]],
-    id_user:['',[Validators.required,Validators.minLength(1)]],
+    userId:['',[Validators.required,Validators.minLength(1)]],
     title:[' ',Validators.required],
     body:[' ',Validators.required],
   })
@@ -28,6 +28,7 @@ export class CrearComponent {
   }
 
   volver(){
-    this.router.navigate(['/tablas']);
+  
+    this.router.navigateByUrl('/tablas')
   }
 }

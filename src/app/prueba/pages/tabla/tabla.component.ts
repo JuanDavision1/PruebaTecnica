@@ -29,7 +29,7 @@ export class TablaComponent {
       });
     
     if(localStorage.getItem('nuevo')) {
-      this.datos.push(JSON.parse('nuevo'));
+      this.datos.unshift(JSON.parse('nuevo'));
     }    
   }
 
@@ -48,7 +48,7 @@ export class TablaComponent {
 
   establecerData(event: TipadoServ): void {
     // Pruebelo voy
-    this.datos.push(event);
+    this.datos.unshift(event);
     this.datosservice.agregardata(this.datos)
       .subscribe( (resp) => {
     localStorage.setItem('nuevo', JSON.stringify(resp));

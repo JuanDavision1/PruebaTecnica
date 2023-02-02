@@ -8,19 +8,18 @@
         <th scope="col">Title</th>
         <th scope="col">Body</th>
         <th scope="col"></th>
-        <th scope="col"> </th>
-        <th scope="col"> </th>
+        <th><button  class= "btn btn-success"type="submit" (click)="abrircrear()" >Crear</button> </th>
+        <th><button  class= "btn btn-primary"type="submit" (click)="abrirmodificar()">Modificar</button> </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of datos;let i= index">
+      <tr *ngFor="let item of datos.slice(0,6);let i= index">
         <th scope="row">{{item.userId}}</th>
         <td>{{item.id}}</td>
         <td>{{item.title}}</td>
         <td>{{item.body}}</td>
         <td><button  class= "btn btn-danger"type="button"  (click)="borrar(i)" >Eliminar</button> </td>
-        <td><button  class= "btn btn-success"type="submit" (click)="abrircrear()" >Crear</button> </td>
-        <td><button  class= "btn btn-primary"type="submit" (click)="abrirmodificar()">Modificar</button> </td>
+     
     </tr>
   
     </tbody>
