@@ -21,11 +21,12 @@ constructor(private datosservice:PruebaService){}
 ngOnInit(): void {
 this.datosservice.getdata().subscribe(
   datos=>{this.datos = datos
-
-  
+   
   } 
-)
 
+)
+this.datos = JSON.parse(localStorage.getItem(('nuevo'))|| '')
+console.log(this.datos)
 }
 borrar(id:number){
   console.log('borrado', id)
