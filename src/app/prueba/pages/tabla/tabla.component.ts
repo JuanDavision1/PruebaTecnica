@@ -8,43 +8,50 @@ import { TipadoServ } from '../../interfaces/tipado.interfaces';
   styleUrls: ['./tabla.component.css']
 })
 export class TablaComponent {
-  modalswitch:boolean = false;
-  modalswitchdos:boolean=false;
-  datos:TipadoServ[]=[];
-  data:TipadoServ={
+
+  public modalswitch: boolean = false;
+  public modalswitchdos: boolean = false;
+  public datos: TipadoServ[] = [];
+  public data: TipadoServ = {
     userId: 0,
     id:     0,
     title:  '',
     body:   '',
+  };
+
+  constructor(private datosservice:PruebaService){}
+
+  ngOnInit(): void {
+    // Get Data
+    this.datosservice.getdata()
+      .subscribe( (datos)=> { 
+        this.datos = datos
+      });
+    
+    if(localStorage.getItem('nuevo')) {
+      this.datos.push(JSON.parse('nuevo'));
+    }    
   }
-constructor(private datosservice:PruebaService){}
-ngOnInit(): void {
-this.datosservice.getdata().subscribe(
-  datos=>{this.datos = datos
-   
-  } 
 
-)
-this.datos = JSON.parse(localStorage.getItem(('nuevo'))|| '')
-console.log(this.datos)
-}
-borrar(id:number){
-  console.log('borrado', id)
-  return this.datos.splice(id,1)
-  //this.datosservice.eliminardata(this.data.id).subscribe(resp=> console.log(resp))
-}
-abrircrear(){
-  this.modalswitch=true
-}
-abrirmodificar(){
-  this.modalswitchdos=true
-}
+  borrar(id: number): TipadoServ[] {
+    console.log('borrado', id);
+    return this.datos.splice(id, 1);
+    //this.datosservice.eliminardata(this.data.id).subscribe(resp=> console.log(resp))
+  }
 
-establecerData(event:TipadoServ[]){
- this.datos =event
-this.datosservice.agregardata(this.datos).subscribe(resp=>{
-  localStorage.setItem('nuevo',JSON.stringify(resp))
-  console.log('Respuesta',resp)})
+  abrircrear(): void{
+    this.modalswitch = true;
+  }
+  abrirmodificar(): void{
+    this.modalswitchdos = true;
+  }
 
-}
+  establecerData(event: TipadoServ): void {
+    // Pruebelo voy
+    this.datos.push(event);
+    this.datosservice.agregardata(this.datos)
+      .subscribe( (resp) => {
+    localStorage.setItem('nuevo', JSON.stringify(resp));
+    console.log('Respuesta', resp)});
+  }
 }

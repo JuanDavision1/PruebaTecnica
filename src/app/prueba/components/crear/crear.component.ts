@@ -9,20 +9,25 @@ import { TipadoServ } from '../../interfaces/tipado.interfaces';
   styleUrls: ['./crear.component.css']
 })
 export class CrearComponent {
-miform: FormGroup = this.fb.group({
-  id:['',[Validators.required,Validators.minLength(1)]],
-  id_user:['',[Validators.required,Validators.minLength(1)]],
-  title:[' ',Validators.required],
-  body:[' ',Validators.required],
-})
-constructor(private fb:FormBuilder,private router: Router ){}
-@Output() newItemEvent = new EventEmitter<TipadoServ[]>();
-guardar(){
-console.log(this.miform.value)
-this.newItemEvent.emit(this.miform.value)
-this.miform.reset()
-}
-volver(){
+
+  @Output() newItemEvent = new EventEmitter<TipadoServ>();
+
+  miform: FormGroup = this.fb.group({
+    id:['',[Validators.required,Validators.minLength(1)]],
+    id_user:['',[Validators.required,Validators.minLength(1)]],
+    title:[' ',Validators.required],
+    body:[' ',Validators.required],
+  })
+  constructor(private fb:FormBuilder,
+              private router: Router ){}
+
+  guardar(){
+    console.log(this.miform.value)
+    this.newItemEvent.emit(this.miform.value)
+    this.miform.reset()
+  }
+
+  volver(){
     this.router.navigate(['/tablas']);
-}
+  }
 }

@@ -14,9 +14,7 @@ export class PruebaService {
    
     return this.http.get<TipadoServ[]>(this.urlservice)  ; 
   }
-  getlocal():TipadoServ[]{
-  return  JSON.parse(localStorage.getItem(('nuevo'))|| '') ; 
-  }
+
   eliminardata(id:number):Observable<TipadoServ>{
     return this.http.delete<TipadoServ>(`${this.urlservice}/${id}`);
   }
