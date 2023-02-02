@@ -1,0 +1,13 @@
+table {
+  width: 800px;
+  border: 1px black;
+  margin: auto;
+}
+app-crear {
+  position: absolute;
+  z-index: 999;
+}
+app-modificar {
+  position: absolute;
+  z-index: 999;
+}

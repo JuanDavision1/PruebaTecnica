@@ -1,0 +1,25 @@
+<div class="crear">
+    <form [formGroup]="miform" (ngSubmit)="guardar()">
+        <h1>Crear Registro </h1>
+        <div class="mb-3">
+           
+          <label  class="form-label" >Id </label>
+          <input type="number" formControlName="id"  class="form-control"  >
+          <span *ngIf="miform.controls['id'].errors && miform.controls['id'].touched "id="emailHelp" class="form-text">Ingresa mas de un digito</span>
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Id Usuario</label>
+          <input type="number"  formControlName="id_user"  min= 3 class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+        <label  class="form-label" >Title </label>
+          <input type="text"formControlName="title"  class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Body</label>
+          <input type="text" formControlName="body"  class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="miform.invalid">Crealo!</button>
+        <button type="button" class="btn btn-primary"  routerLink="principal/tablas">Volver</button>
+      </form>
+</div>
