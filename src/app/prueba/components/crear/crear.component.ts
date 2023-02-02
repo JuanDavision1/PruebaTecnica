@@ -16,8 +16,8 @@ miform: FormGroup = this.fb.group({
 constructor(private fb:FormBuilder){}
 @Output() newItemEvent = new EventEmitter<string[]>();
 guardar(){
-
+console.log(this.miform.value)
 this.newItemEvent.emit(this.miform.value)
-  this.miform.reset()
+//this.miform.reset()
 }
 }

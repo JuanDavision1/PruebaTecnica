@@ -1,4 +1,4 @@
-<app-crear *ngIf="modalswitch== true"></app-crear>
+<app-crear *ngIf="modalswitch== true" (newItemEvent)="establecerData($event)"></app-crear>
 <app-modificar *ngIf="modalswitchdos== true"></app-modificar>
 <table class="table" >
     <thead>

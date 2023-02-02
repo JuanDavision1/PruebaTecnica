@@ -36,5 +36,8 @@ abrirmodificar(){
   this.modalswitchdos=true
 }
 
-
+establecerData(event:TipadoServ[]){
+ this.datos =event
+ console.log(this.datos)
+}
 }
